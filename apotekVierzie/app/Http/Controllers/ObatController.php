@@ -32,11 +32,10 @@ class ObatController extends Controller
         $validasi = $request->validate([
             'nama_obat' => 'required',
             'jenis_obat' => 'required',
-            'tanggal_dibuat' => 'required',
-            'tanggal_kadaluarsa' => 'required',
+            'tanggal_dibuat' => 'required|date',
+            'tanggal_kadaluarsa' => 'required|date',
             'manfaat' => 'required',
             'efek_samping' => 'required',
-            // 'foto' => 'required|image|mimes:jpg,jpeg,png'
         ]);
 
         $obat = new Obat();
@@ -47,18 +46,9 @@ class ObatController extends Controller
         $obat->manfaat = $validasi['manfaat'];
         $obat->efek_samping = $validasi['efek_samping'];
 
-
-        // $ext = $request->bendera->getClientOriginalExtension();
-//                              "Nama File"
-//                                  v
-        // $new_file = $validasi['nama_negara'].".".$ext;
-//                              "Nama Folder"
-//                                     v
-        // $request->bendera->storeAS('public/flags/',$new_file);
-
-        // $negara->bendera = $new_file;
         $obat->save();
-        return redirect()->route('obat.index')->with('success', "data obat ".$validasi['nama_obat']." berhasil disimpan");
+
+        return redirect()->route('obat.index')->with('success', "Data obat " . $validasi['nama_obat'] . " berhasil disimpan");
     }
 
     /**
@@ -74,10 +64,7 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        $obat = Obat::orderBy('nama_obat', 'ASC')->get();
-        return view('obat.edit')->with('obat',$obat);
-        $obat = Obat::all();
-
+        return view('obat.edit')->with('obat', $obat);
     }
 
     /**
@@ -88,23 +75,22 @@ class ObatController extends Controller
         $validasi = $request->validate([
             'nama_obat' => 'required',
             'jenis_obat' => 'required',
-            'tanggal_dibuat' => 'required',
-            'tanggal_kadaluarsa' => 'required',
+            'tanggal_dibuat' => 'required|date',
+            'tanggal_kadaluarsa' => 'required|date',
             'manfaat' => 'required',
             'efek_samping' => 'required',
-            // 'foto' => 'required|image|mimes:jpg,jpeg,png'
         ]);
 
-        $obat = Obat::find($obat);
         $obat->nama_obat = $validasi['nama_obat'];
         $obat->jenis_obat = $validasi['jenis_obat'];
         $obat->tanggal_dibuat = $validasi['tanggal_dibuat'];
         $obat->tanggal_kadaluarsa = $validasi['tanggal_kadaluarsa'];
         $obat->manfaat = $validasi['manfaat'];
         $obat->efek_samping = $validasi['efek_samping'];
+        
         $obat->save();
-        return redirect()->route('obat.index')->with('success', "Data obat " . $validasi["nama_obat"] . " berhasil diupdate");
 
+        return redirect()->route('obat.index')->with('success', "Data obat " . $validasi['nama_obat'] . " berhasil diupdate");
     }
 
     /**
@@ -112,9 +98,8 @@ class ObatController extends Controller
      */
     public function destroy(String $id)
     {
-        $obat = Obat::find($id);
+        $obat = Obat::findOrFail($id);
         $obat->delete();
-         return redirect()->route('obat.index')->with('success', 'Data berhasil di Hapus');
-
+        return redirect()->route('obat.index')->with('success', 'Data berhasil dihapus');
     }
 }

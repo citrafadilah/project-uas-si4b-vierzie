@@ -15,7 +15,7 @@ class StokController extends Controller
     {
         $stok = Stok::all();
         $obat = Obat::all();
-        return view('stok.index')->with('stok', $stok);
+        return view('stok.index')->with('stok', $stok, 'obat', $obat);
     }
 
     /**
@@ -23,7 +23,6 @@ class StokController extends Controller
      */
     public function create()
     {
-        $obat = Obat::all();
         $obat = Obat::orderBy('nama_obat', 'ASC')->get();
         return view('stok.create')->with('obat', $obat);
     }

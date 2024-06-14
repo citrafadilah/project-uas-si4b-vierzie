@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stok extends Model
 {
     protected $table = "stoks";
-    use HasFactory,HasUuids;
+    use HasFactory;
     public function obat(){
         return $this->belongsTo(Obat::class, 'obat_id');
 }

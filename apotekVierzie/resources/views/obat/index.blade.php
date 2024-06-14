@@ -35,21 +35,21 @@
                                         <td>{{ $item->efek_samping }}</td>
                                         {{-- <td>{{ $item->created_at }}</td> --}}
                                         @if (Auth::User()->role === 'A')
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="{{ route('obat.edit', $item->id) }}"><button
-                                                        class="btn btn-success mr-2">Edit</button></a>
-                                                        
-                                                <form method="POST" class="delete-form"
-                                                    action="{{ route('obat.destroy', $item->id) }}">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger show_confirm"><i
-                                                            class="far fa-trash-alt mr-2"></i>Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    @endif
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="{{ route('obat.edit', $item->id) }}"><button
+                                                            class="btn btn-success mr-2">Edit</button></a>
+
+                                                    <form method="POST" class="delete-form"
+                                                        action="{{ route('obat.destroy', $item->id) }}">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger show_confirm"><i
+                                                                class="far fa-trash-alt mr-2"></i>Delete</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

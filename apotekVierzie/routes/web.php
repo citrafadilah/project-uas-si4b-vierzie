@@ -6,6 +6,7 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\StokController;
 use Illuminate\Http\Request;
@@ -32,9 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('dashboard');
 	Route::resource('obat',ObatController::class);
 	Route::resource('stok',StokController::class);
+	Route::resource('riwayat',RiwayatController::class);
     Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
-	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
