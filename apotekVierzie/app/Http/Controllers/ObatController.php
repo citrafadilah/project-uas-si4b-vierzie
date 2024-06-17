@@ -81,6 +81,7 @@ class ObatController extends Controller
             'efek_samping' => 'required',
         ]);
 
+        $obat = Obat::find($obat->id);
         $obat->nama_obat = $validasi['nama_obat'];
         $obat->jenis_obat = $validasi['jenis_obat'];
         $obat->tanggal_dibuat = $validasi['tanggal_dibuat'];

@@ -5,6 +5,9 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    @if (Auth::User()->role === 'A')
+                        <a href="{{ route('riwayat.create') }}" class="mb-3 btn bg-gradient-primary mt-3">Tambah</a>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -19,12 +22,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($model as $item)
-                                <tr>
-                                    <td>{{ $model->obat->nama_obat }}</td>
-                                    <td>{{ $model->stok->jumlah_masuk }}</td>
-                                        <td>{{ $model->stok->jumlah_keluar }}</td>
-                                        <td>{{ $model->stok->tanggal_transaksi }}</td>
+                                @foreach ($riwayat as $item)
+                                    <tr>
+                                        <td>{{ $riwayat->obat->nama_obat }}</td>
+                                        <td>{{ $riwayat->stok->jumlah_masuk }}</td>
+                                        <td>{{ $riwayat->stok->jumlah_keluar }}</td>
+                                        <td>{{ $riwayat->stok->tanggal_transaksi }}</td>
                                         {{-- @if (Auth::User()->role === 'A')
                                             <td>
                                                 <form method="POST" class="delete-form"

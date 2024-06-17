@@ -15,11 +15,10 @@ class RiwayatController extends Controller
      */
     public function index()
     {
-        $model = Obat::all();
-        $model = Stok::all();
-        $model = User::all();
-        $model = Riwayat::all();
-        return view('riwayat.index')->with('model', $model);
+        $stok = Stok::all();
+        $user = User::all();
+        $riwayat = Riwayat::all();
+        return view('riwayat.index')->with('riwayat', $riwayat, 'user', $user, 'stok', $stok );
     }
 
     /**
@@ -27,9 +26,10 @@ class RiwayatController extends Controller
      */
     public function create()
     {
-        $obat = Obat::all();
-        $stok = Stok::all();
-        return view('riwayat.create', compact('obat', 'stok'));
+        $riwayat = Stok::all();
+        $riwayat = User::all();
+        $riwayat = Riwayat::orderBy('user_id', 'ASC')->get();
+        return view('riwayat.create')->with('riwayat', $riwayat);
     }
 
     /**
@@ -37,15 +37,23 @@ class RiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'obat_id' => 'required|exists:obat,id',
-            'stok_id' => 'required|exists:stok,id',
+        $validasi = $request->validate([
+            'user_id' => 'required',
+            'obat_id' => 'required',
+            'jumlah' => 'required',
+            'tipe_transaksi' => 'required',
+            'tanggal_transaksi' => 'required',
         ]);
 
-        Riwayat::create($request->all());
+        $riwayat = new Riwayat();
+        $riwayat->user_id = $validasi['user_id'];
+        $riwayat->obat_id = $validasi['obat_id'];
+        $riwayat->jumlah = $validasi['jumlah'];
+        $riwayat->tipe_transaksi = $validasi['tipe_transaksi'];
+        $riwayat->tangal_transaksi = $validasi['tanggal_transaksi'];
+        $riwayat->save();
 
-        return redirect()->route('riwayat.index')
-                         ->with('success', 'Riwayat created successfully.');
+        return redirect()->route('riwayat.index')->with('success', "data Riwayat ".$validasi['user_id']." berhasil disimpan");
 
     }
 

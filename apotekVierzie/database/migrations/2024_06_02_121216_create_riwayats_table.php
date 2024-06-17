@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('riwayats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('stok_id')->constrained();
+            $table->foreignId('obat_id')->constrained();
             $table->integer('jumlah');
             $table->string('tipe_transaksi');
             $table->date('tanggal_transaksi');

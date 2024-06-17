@@ -83,13 +83,12 @@ class StokController extends Controller
             'tanggal_transaksi' => 'required',
         ]);
 
-        $stok = Stok::find($stok);
         $stok->obat_id = $validasi['obat_id'];
         $stok->jumlah_masuk = $validasi['jumlah_masuk'];
         $stok->jumlah_keluar = $validasi['jumlah_keluar'];
         $stok->tanggal_transaksi = $validasi['tanggal_transaksi'];
         $stok->save();
-        return redirect()->route('stok.index')->with('success', "Data stok " . $validasi["nama_obat"] . " berhasil diupdate");
+        return redirect()->route('stok.index')->with('success', "Data stok " . $validasi["obat_id"] . " berhasil diupdate");
 
     }
 

@@ -10,14 +10,19 @@ class Riwayat extends Model
     protected $table = 'riwayats';
     use HasFactory;
 
-    public function obat()
+    public function user()
     {
-        return $this->belongsTo(Obat::class);
+        return $this->belongsTo(User::class);
     }
 
     public function stok()
     {
         return $this->hasMany(Stok::class);
+    }
+
+    public function obat()
+    {
+        return $this->hasMany(Obat::class);
     }
 
 }

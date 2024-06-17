@@ -3,16 +3,16 @@
 @section('content')
     <div class="col">
         <div class="col-md-6 grid-margin stretch-card">
-            <form action="{{ route('obat.update', $obat->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('patch')
-                <div class="card">
-                    <div class="card-body">
-                        @if (Session::get('success'))
-                            <div class="alert alert-success">{{ Session::get('success') }}</div>
-                        @endif
-                        <h4 class="card-title">Edit Obat {{ $obat->nama_obat }}</h4>
-                        <p class="card-description">Edit List</p>
+            <div class="card">
+                <div class="card-body">
+                    @if (Session::get('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    @endif
+                    <h4 class="card-title">Edit Obat {{ $obat->nama_obat }}</h4>
+                    <p class="card-description">Edit List</p>
+                    <form action="{{ route('obat.update', $obat->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('patch')
                         <div class="form-group">
                             <label for="nama">Nama Obat</label>
                             <input type="text" class="form-control" name="nama_obat" placeholder="Nama Obat"
@@ -61,12 +61,11 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
                         <button type="submit" class=" btn bg-gradient-primary me-2">Simpan</button>
                         <a href="{{ route('obat.index') }}" class="btn btn-light">Batal</a>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 @endsection
