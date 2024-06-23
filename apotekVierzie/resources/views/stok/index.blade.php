@@ -13,8 +13,8 @@
                             <thead>
                                 <tr>
                                     <th>Nama Obat</th>
-                                    <th>Jumlah Masuk</th>
-                                    <th>Jumlah Keluar</th>
+                                    {{-- <th>Jumlah Masuk</th> --}}
+                                    {{-- <th>Jumlah Keluar</th> --}}
                                     <th>tanggal_transaksi</th>
                                     <th>Total Stok</th>
                                     @if (Auth::User()->role === 'A')
@@ -26,8 +26,8 @@
                                 @foreach ($stok as $item)
                                     <tr>
                                         <td>{{ $item->obat->nama_obat }}</td>
-                                        <td>{{ $item->jumlah_masuk }}</td>
-                                        <td>{{ $item->jumlah_keluar }}</td>
+                                        {{-- <td>{{ $item->jumlah_masuk }}</td> --}}
+                                        {{-- <td>{{ $item->jumlah_keluar }}</td> --}}
                                         <td>{{ $item->tanggal_transaksi }}</td>
                                         <td>{{ $item->jumlah_masuk - $item->jumlah_keluar }}</td>
                                         @if (Auth::User()->role === 'A')
