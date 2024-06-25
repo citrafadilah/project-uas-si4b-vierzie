@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\ObatController;
@@ -27,17 +28,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', [HomeController::class, 'index']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 	Route::resource('obat',ObatController::class);
 	Route::resource('stok',StokController::class);
 	Route::resource('riwayat',RiwayatController::class);
     Route::get('/logout', [SessionsController::class, 'destroy']);
-    Route::get('/login', function () {
-		return view('dashboard');
-	})->name('sign-up');
 });
 
 
@@ -45,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/', [SessionsController::class, 'create']);
     Route::get('/login', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
 	Route::get('/login/forgot-password', [ResetController::class, 'create']);

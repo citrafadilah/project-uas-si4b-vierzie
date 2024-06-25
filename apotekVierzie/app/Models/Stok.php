@@ -10,7 +10,13 @@ class Stok extends Model
 {
     protected $table = "stoks";
     use HasFactory;
-    public function obat(){
+    public function obat()
+    {
         return $this->belongsTo(Obat::class, 'obat_id');
-}
+    }
+
+    public function riwayat()
+    {
+        return $this->hasMany(Riwayat::class, 'stok_id');
+    }
 }

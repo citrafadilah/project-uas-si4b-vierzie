@@ -8,10 +8,8 @@
                     @if (Session::get('success'))
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
-
                     <h4 class="card-title">Input Stok Obat</h4>
                     <p class="card-description">Tambah Stok Obat</p>
-
                     <form class="forms-sample" action="{{ route('stok.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">

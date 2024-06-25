@@ -68,27 +68,21 @@ class StokController extends Controller
         $stok = Stok::all();
         $obat = Obat::all();
 
-
+        return view('stok.edit')->with('stok', $stok, 'obat', $obat);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Stok $stok)
+    public function update(Request $request, $id)
     {
-        $validasi = $request->validate([
-            'obat_id' => 'required',
-            'jumlah_masuk' => 'required',
-            'jumlah_keluar' => 'required',
-            'tanggal_transaksi' => 'required',
-        ]);
-
-        $stok->obat_id = $validasi['obat_id'];
-        $stok->jumlah_masuk = $validasi['jumlah_masuk'];
-        $stok->jumlah_keluar = $validasi['jumlah_keluar'];
-        $stok->tanggal_transaksi = $validasi['tanggal_transaksi'];
+        $stok = Stok::find($id);
+        $stok->obat_id = $request->obat_id;
+        $stok->jumlah_masuk = $request->jumlah_masuk;
+        $stok->jumlah_keluar = $request->jumlah_keluar;
+        $stok->tanggal_transaksi = $request->tanggal_transaksi;
         $stok->save();
-        return redirect()->route('stok.index')->with('success', "Data stok " . $validasi["obat_id"] . " berhasil diupdate");
+        return redirect()->route('stok.index')->with('success', "Data stok  berhasil diupdate");
 
     }
 

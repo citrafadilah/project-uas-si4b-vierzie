@@ -11,9 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $obat['obat'] = Obat::all()->count();
-        $stok['stok'] = Stok::all()->count();
-        $riwayat['riwayat'] = Riwayat::all()->count();
-        return redirect('dashboard');
+        $data['obat'] = Obat::count();
+        $data['stok'] = Stok::count();
+        $data['riwayat'] = Riwayat::count();
+        return view('dashboard.index', compact('data'));
     }
 }
