@@ -26,10 +26,11 @@ class RiwayatController extends Controller
      */
     public function create()
     {
-        $riwayat = Stok::all();
-        $riwayat = User::all();
-        $riwayat = Riwayat::orderBy('user_id', 'ASC')->get();
-        return view('riwayat.create')->with('riwayat', $riwayat);
+        $riwayat = new Riwayat();
+        $obat = Obat::all();
+        $stok = Stok::all();
+        $user = User::all();
+        return view('riwayat.create', compact('riwayat'));
     }
 
     /**
@@ -37,23 +38,15 @@ class RiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            'user_id' => 'required',
-            'obat_id' => 'required',
-            'jumlah' => 'required',
-            'tipe_transaksi' => 'required',
-            'tanggal_transaksi' => 'required',
-        ]);
-
         $riwayat = new Riwayat();
-        $riwayat->user_id = $validasi['user_id'];
-        $riwayat->obat_id = $validasi['obat_id'];
-        $riwayat->jumlah = $validasi['jumlah'];
-        $riwayat->tipe_transaksi = $validasi['tipe_transaksi'];
-        $riwayat->tangal_transaksi = $validasi['tanggal_transaksi'];
+        $riwayat->user_id = auth()->user()->id;
+        $riwayat->obat_id = $request->obat_id;
+        $riwayat->jumlah = $request->jumlah;
+        $riwayat->tipe_transaksi = 'Pemasukan';
+        $riwayat->tangal_transaksi = $request->tanggal_transaksi;
         $riwayat->save();
 
-        return redirect()->route('riwayat.index')->with('success', "data Riwayat ".$validasi['user_id']." berhasil disimpan");
+        return redirect()->route('riwayat.index')->with('success', "data Riwayat ".$riwayat." berhasil disimpan");
 
     }
 
