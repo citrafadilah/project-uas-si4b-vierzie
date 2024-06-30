@@ -1,18 +1,3 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 
 @if (\Request::is('rtl'))
@@ -34,16 +19,16 @@
   <title>
     Soft UI Dashboard by Creative Tim
   </title>
-  <!--     Fonts and icons     -->
-  <link href="{{ url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700') }}" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="{{ url('../assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-  <link href="{{ url('../assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="{{ url('https://kit.fontawesome.com/42d5adcbca.js') }}" crossorigin="anonymous"></script>
-  <link href="{{ url('../assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="{{ url('../assets/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700') }}" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="{{ asset('https://kit.fontawesome.com/42d5adcbca.js') }}" crossorigin="anonymous"></script>
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.7') }}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100 {{ (\Request::is('rtl') ? 'rtl' : (Request::is('virtual-reality') ? 'virtual-reality' : '')) }} ">
@@ -63,12 +48,12 @@
     </div>
   @endif
     <!--   Core JS Files   -->
-  <script src="{{ url('../assets/js/core/popper.min.js') }}"></script>
-  <script src="{{ url('../assets/js/core/bootstrap.min.js') }}"></script>
-  <script src="{{ url('../assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-  <script src="{{ url('../assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-  <script src="{{ url('../assets/js/plugins/fullcalendar.min.js') }}"></script>
-  <script src="{{ url('../assets/js/plugins/chartjs.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/plugins/fullcalendar.min.js') }}"></script>
+  <script src="{{ asset('../assets/js/plugins/chartjs.min.js') }}"></script>
   @stack('rtl')
   @stack('dashboard')
   <script>
