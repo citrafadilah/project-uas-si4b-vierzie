@@ -26,11 +26,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('obat',ObatController::class, 'index');
-Route::post('obat',ObatController::class, 'store');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+	Route::get('obat',ObatController::class, 'index');
+	Route::post('obat',ObatController::class, 'store');
 	Route::resource('stok',StokController::class);
 	Route::resource('riwayat',RiwayatController::class);
     Route::get('/logout', [SessionsController::class, 'destroy']);
