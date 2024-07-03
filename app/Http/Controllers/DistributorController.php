@@ -13,7 +13,7 @@ class DistributorController extends Controller
     public function index()
     {
         $distributor = Distributor::all();
-        return view('distributor.index', compact('distributor'));
+        return view('distributor.index')->with('distributor', $distributor);
     }
 
     /**

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Distributor extends Model
 {
     use HasFactory, HasUuids;
-
+protected $table = 'distributors';
     protected $fillable = [
         'nama',
         'alamat',
