@@ -12,8 +12,8 @@ class DistributorController extends Controller
      */
     public function index()
     {
-        $distributors = Distributor::all();
-        return view('distributors.index', compact('distributors'));
+        $distributor = Distributor::all();
+        return view('distributor.index', compact('distributor'));
     }
 
     /**
@@ -21,7 +21,7 @@ class DistributorController extends Controller
      */
     public function create()
     {
-        return view('distributors.create');
+        return view('distributor.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class DistributorController extends Controller
         'status' => '-',
     ]);
 
-    return redirect()->route('distributors.create')->with('success', 'Distributor berhasil ditambahkan.');
+    return redirect()->route('distributor.create')->with('success', 'Distributor berhasil ditambahkan.');
 }
 
     public function update(Request $request, $id)
@@ -52,7 +52,7 @@ class DistributorController extends Controller
         $distributor = Distributor::findOrFail($id);
         $distributor->update($request->all());
 
-        return redirect()->route('distributors.index')->with('success', 'Data distributor berhasil diperbarui.');
+        return redirect()->route('distributor.index')->with('success', 'Data distributor berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -60,7 +60,7 @@ class DistributorController extends Controller
         $distributor = Distributor::findOrFail($id);
         $distributor->delete();
 
-        return redirect()->route('distributors.index')->with('success', 'Distributor berhasil dihapus.');
+        return redirect()->route('distributor.index')->with('success', 'Distributor berhasil dihapus.');
     }
 
     public function sendRequest(Request $request, $id)
@@ -71,7 +71,7 @@ class DistributorController extends Controller
             'status' => 'sedang diproses'
         ]);
 
-        return redirect()->route('distributors.index')->with('success', 'Permintaan untuk distributor berhasil dikirim.');
+        return redirect()->route('distributor.index')->with('success', 'Permintaan untuk distributor berhasil dikirim.');
     }
 
     public function markAsArrived($id)
@@ -79,7 +79,7 @@ class DistributorController extends Controller
         $distributor = Distributor::findOrFail($id);
         $distributor->update(['status' => '-']);
 
-        return redirect()->route('distributors.index')->with('success', 'Status distributor berhasil diupdate.');
+        return redirect()->route('distributor.index')->with('success', 'Status distributor berhasil diupdate.');
     }
 
 

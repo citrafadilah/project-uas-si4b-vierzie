@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('stok',StokController::class);
 	Route::resource('riwayat',RiwayatController::class);
     Route::get('/logout', [SessionsController::class, 'destroy']);
-    Route::resource('distributors', DistributorController::class);
+    Route::resource('distributor', DistributorController::class);
     Route::post('distributors/{id}/send-request', [DistributorController::class, 'sendRequest'])->name('distributors.sendRequest');
     Route::post('distributors/{id}/mark-arrived', [DistributorController::class, 'markAsArrived'])->name('distributors.markAsArrived');
 });
