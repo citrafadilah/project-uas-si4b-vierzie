@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\ObatController;
@@ -33,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('stok',StokController::class);
 	Route::resource('riwayat',RiwayatController::class);
     Route::get('/logout', [SessionsController::class, 'destroy']);
+    Route::resource('distributors', DistributorController::class);
+    Route::post('distributors/{id}/send-request', [DistributorController::class, 'sendRequest'])->name('distributors.sendRequest');
+    Route::post('distributors/{id}/mark-arrived', [DistributorController::class, 'markAsArrived'])->name('distributors.markAsArrived');
 });
 
 
