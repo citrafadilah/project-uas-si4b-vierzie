@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DistributorController;
 use App\Http\Controllers\API\ObatController;
 use App\Http\Controllers\API\RiwayatController;
 use App\Http\Controllers\API\StokController;
@@ -24,3 +25,8 @@ Route::post('riwayat',[RIwayatController::class, 'store']);
 Route::get('riwayat/{riwayat}',[RiwayatController::class, 'show']);
 Route::put('riwayat/{riwayat}',[RiwayatController::class, 'update']);
 Route::delete('riwayat/{riwayat}',[RiwayatController::class, 'destroy']);
+Route::get('distributor',[DistributorController::class, 'index']);
+Route::post('distributor',[DistributorController::class, 'store']);
+Route::get('distributor/{distributor}',[DistributorController::class, 'show']);
+Route::put('distributor/{distributor}',[DistributorController::class, 'update']);
+Route::delete('distributor/{distributor}',[DistributorController::class, 'destroy']);
