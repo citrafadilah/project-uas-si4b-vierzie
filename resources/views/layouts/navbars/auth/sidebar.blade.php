@@ -78,6 +78,7 @@
                     <span class="nav-link-text ms-1">Stok</span>
                 </a>
             </li>
+            @if (Auth::User()->role === 'A')
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('riwayat') ? 'active' : '' }}" href="{{ url('riwayat') }}">
                     <div
@@ -104,7 +105,6 @@
                     <span class="nav-link-text ms-1">Riwayat</span>
                 </a>
             </li>
-            @if (Auth::User()->role === 'A')
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('distributor') ? 'active' : '' }}" href="{{ url('distributor') }}">
                     <div
