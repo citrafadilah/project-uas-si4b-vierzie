@@ -104,6 +104,7 @@
                     <span class="nav-link-text ms-1">Riwayat</span>
                 </a>
             </li>
+            @if (Auth::User()->role === 'A')
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('distributor') ? 'active' : '' }}" href="{{ url('distributor') }}">
                     <div
@@ -131,6 +132,7 @@
                     <span class="nav-link-text ms-1">Distributor</span>
                 </a>
             </li>
+            @endif
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
