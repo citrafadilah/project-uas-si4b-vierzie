@@ -16,9 +16,9 @@
                                     <th>Jenis Transaksi</th>
                                     <th>Jumlah</th>
                                     <th>Tanggal</th>
-                                    {{-- @if (Auth::User()->role === 'A')
+                                    @if (Auth::User()->role === 'A')
                                         <th>Aksi</th>
-                                    @endif --}}
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,17 +28,17 @@
                                         <td class="text-capitalize">{{ $item->jenis_transaksi }}</td>
                                         <td>{{ $item->jumlah }}</td>
                                         <td>{{ $item->tanggal }}</td>
-                                        {{-- @if (Auth::User()->role === 'A')
+                                        @if (Auth::User()->role === 'A')
                                             <td>
                                                 <form method="POST" class="delete-form"
-                                                    action="{{ route('stok.destroy', $item->id) }}">
+                                                    action="{{ route('riwayat.destroy', $item->id) }}">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit"
                                                         class="btn btn-danger show_confirm mt-2">Delete</button>
                                                 </form>
                                             </td>
-                                        @endif --}}
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

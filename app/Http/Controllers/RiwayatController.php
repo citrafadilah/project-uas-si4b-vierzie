@@ -47,4 +47,20 @@ class RiwayatController extends Controller
 
         return redirect('/riwayat')->with('success', 'Transaction saved successfully');
     }
+
+    public function update(Request $request, $id)
+    {
+        $riwayat = Riwayat::findOrFail($id);
+        $riwayat->update($request->all());
+
+        return redirect('/riwayat')->with('success', 'Transaction updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $riwayat = Riwayat::findOrFail($id);
+        $riwayat->delete();
+
+        return redirect('/riwayat')->with('success', 'Transaction deleted successfully');
+    }
 }
