@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('distributor', DistributorController::class);
     Route::post('distributors/{id}/send-request', [DistributorController::class, 'sendRequest'])->name('distributor.sendRequest');
     Route::post('distributors/{id}/mark-arrived', [DistributorController::class, 'markAsArrived'])->name('distributor.markAsArrived');
+    Route::get('profile', function () {
+		return view('profile');
+	})->name('profile');
+
 });
 
 
