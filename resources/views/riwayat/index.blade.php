@@ -35,7 +35,7 @@
                                                             class="btn btn-success mr-2">Edit</button></a>
 
                                                     <form method="POST" class="delete-form"
-                                                        action="{{ route('obat.destroy', $item->id) }}">
+                                                        action="{{ route('riwayat.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger show_confirm"><i
