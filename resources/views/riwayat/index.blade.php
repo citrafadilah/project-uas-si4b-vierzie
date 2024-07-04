@@ -30,13 +30,18 @@
                                         <td>{{ $item->tanggal }}</td>
                                         @if (Auth::User()->role === 'A')
                                             <td>
-                                                <form method="POST" class="delete-form"
-                                                    action="{{ route('riwayat.destroy', $item->id) }}">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="btn btn-danger show_confirm mt-2">Delete</button>
-                                                </form>
+                                                <div class="btn-group">
+                                                    <a href="{{ route('riwayat.edit', $item->id) }}"><button
+                                                            class="btn btn-success mr-2">Edit</button></a>
+
+                                                    <form method="POST" class="delete-form"
+                                                        action="{{ route('obat.destroy', $item->id) }}">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger show_confirm"><i
+                                                                class="far fa-trash-alt mr-2"></i>Delete</button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         @endif
                                     </tr>
