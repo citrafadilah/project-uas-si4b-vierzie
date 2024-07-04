@@ -16,11 +16,16 @@ class HomeController extends Controller
         $data['stok'] = Stok::count();
         $data['riwayat'] = Riwayat::where('jenis_transaksi', 'masuk')->count();
 
-        $orderCounts = Riwayat::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as total')
+        return view('dashboard.index', compact('data'));
+    }
+
+    public function getDashboardData()
+{
+    $orderCounts = Riwayat::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as total')
         ->groupBy('month')
         ->orderBy('month')
         ->get();
 
-        return view('dashboard.index', compact('data', 'orderCounts'));
-    }
+    return response()->json($orderCounts);
+}
 }

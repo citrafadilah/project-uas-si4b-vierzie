@@ -66,7 +66,14 @@
                             </h6>
                             1. Mengutamakan keselamatan pasien dalam setiap pelayanan yang diberikan.
                             <br> 2. Memastikan stok obat selalu tersedia dan terjaga kualitasnya.
-                            <br> 3. Menyediakan informasi kesehatan kepada masyarakat.</p>
+                            <br> 3. Menyediakan informasi kesehatan kepada masyarakat.
+                            <br>
+                            <br>
+                            <h6>
+                                Jam Operasional :
+                            </h6>
+                            Senin - Jumat: 07.00 - 22.00 WIB
+                            <br>Sabtu - Minggu: 08.00 - 22.00 WIB</p>
                             <hr class="horizontal gray-light my-4">
                             <ul class="list-group">
                                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Owner
@@ -76,7 +83,7 @@
                                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email :</strong>
                                     &nbsp; info@apotekvierzie.com</li>
                                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location
-                                        :</strong> &nbsp; Jalan Urip Sumaharjo No.23</li>
+                                        :</strong> &nbsp; Jalan Urip Sumaharjo No.23, Kota Palembang, Kode Pos 0112</li>
                                 <li class="list-group-item border-0 ps-0 pb-0">
                                     <strong class="text-dark text-sm">Social:</strong> &nbsp;
                                     <a class="btn btn-whatsapp btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">

@@ -44,7 +44,7 @@ class DistributorController extends Controller
         'status' => '-',
     ]);
 
-    return redirect()->route('distributor.create')->with('success', 'Distributor berhasil ditambahkan.');
+    return redirect()->route('distributor.index')->with('success', 'Distributor berhasil ditambahkan.');
 }
 
     public function update(Request $request, $id)
