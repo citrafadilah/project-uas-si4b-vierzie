@@ -14,18 +14,13 @@ class HomeController extends Controller
     {
         $data['obat'] = Obat::count();
         $data['stok'] = Stok::count();
-        $data['riwayat'] = Riwayat::where('jenis_transaksi', 'Keluar')->count();
+        $data['riwayat'] = Riwayat::where('jenis_transaksi', 'masuk')->count();
 
-        $graph = Riwayat::select(
-            DB::raw('MONTH(created_at) as bulan'),
-            DB::raw('count(id) as total')
-        )
-            ->groupBy('bulan')
-            ->get();
+        $orderCounts = Riwayat::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as total')
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get();
 
-        foreach ($graph as $item) {
-            $item->bulan = date('F', mktime(0, 0, 0, $item->bulan, 1));
-        }
-        return view('dashboard.index', compact('data', 'graph'));
+        return view('dashboard.index', compact('data', 'orderCounts'));
     }
 }
