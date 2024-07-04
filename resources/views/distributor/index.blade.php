@@ -18,7 +18,9 @@
                                     <th>Email</th>
                                     <th>Catatan</th>
                                     <th>Status</th>
+                                    @if (Auth::User()->role === 'A')
                                     <th>Aksi</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +37,7 @@
                                                 {{ $distributor->status }}
                                             </span>
                                         </td>
+                                        @if (Auth::User()->role === 'A')
                                         <td>
                                             <div class="d-flex flex-row">
                                                 <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal"
@@ -61,6 +64,7 @@
                                                 </form>
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
 
                                     <!-- Modal -->
