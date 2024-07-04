@@ -89,7 +89,7 @@
                         <div class="form-group">
                             <label for="jenis_transaksi">Jenis Transaksi:</label>
                             <select class="form-control" name="jenis_transaksi" id="jenis_transaksi">
-                                <option value="" selected>Jenis Transaksi</option>
+                                <option value="{{ $riwayat->jenis_transaksi }}" selected>{{ $riwayat->jenis_transaksi }}</option>
                                 <option value="masuk">Masuk</option>
                                 <option value="keluar">Keluar</option>
                             </select>
