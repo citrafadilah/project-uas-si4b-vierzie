@@ -8,14 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Distributor extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 protected $table = 'distributors';
-    protected $fillable = [
-        'nama',
-        'alamat',
-        'noHp',
-        'email',
-        'catatan',
-        'status'
-    ];
+protected $fillable = ['nama', 'alamat', 'noHp', 'email', 'catatan', 'status'];
 }

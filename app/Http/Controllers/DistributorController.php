@@ -29,20 +29,14 @@ class DistributorController extends Controller
      */
     public function store(Request $request)
 {
-    $request->validate([
+    $val = $request->validate([
         'nama' => 'required',
         'alamat' => 'required',
         'noHp' => 'required',
         'email' => 'required|email',
     ]);
 
-    Distributor::create([
-        'nama' => $request->nama,
-        'alamat' => $request->alamat,
-        'noHp' => $request->noHp,
-        'email' => $request->email,
-        'status' => '-',
-    ]);
+    Distributor::create($val);
 
     return redirect()->route('distributor.index')->with('success', 'Distributor berhasil ditambahkan.');
 }
@@ -77,7 +71,7 @@ class DistributorController extends Controller
     public function markAsArrived($id)
     {
         $distributor = Distributor::findOrFail($id);
-        $distributor->update(['status' => '-']);
+        $distributor->update(['status' => 'barang sudah sampai']);
 
         return redirect()->route('distributor.index')->with('success', 'Status distributor berhasil diupdate.');
     }

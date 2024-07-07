@@ -36,13 +36,7 @@ class ObatController extends Controller
             'efek_samping' => 'required',
         ]);
 
-        $obat = new Obat();
-        $obat->nama_obat = $validasi['nama_obat'];
-        $obat->jenis_obat = $validasi['jenis_obat'];
-        $obat->manfaat = $validasi['manfaat'];
-        $obat->efek_samping = $validasi['efek_samping'];
-
-        $obat->save();
+        Obat::create($validasi);
 
         return redirect()->route('obat.index')->with('success', "Data obat " . $validasi['nama_obat'] . " berhasil disimpan");
     }

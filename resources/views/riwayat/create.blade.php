@@ -33,7 +33,7 @@
                             <select name="stok_id" class="form-control">
                                 @foreach ($stok as $item)
                                     {{-- <input type="hidden" name="stok" value="{{ $item['jumlah_obat'] }}"> --}}
-                                    <option value="{{ $item['id'] }}">{{$item->jumlah_obat}} - {{ $item->obat->nama_obat }}</option>
+                                    <option value="{{ $item['id'] }}">{{$item->jumlah_obat}} - {{ $item->obat->nama_obat }} - {{ $item->tanggal_kadaluarsa }}</option>
                                 @endforeach
                             </select>
                             @error('obat_id')
@@ -43,7 +43,7 @@
 
                         <div class="form-group">
                             <label>Tanggal</label>
-                            <input type="date" class="form-control" name="tanggal" placeholder="Tanggal">
+                            <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" min="<?php echo date('Y-m-d'); ?>">
                             @error('tanggal')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

@@ -1,12 +1,18 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
+@if (Session::has('success'))
+<p class="alert alert-success">{{ Session::get('success') }}</p>
+@endif
+@if (Session::has('error'))
+<p class="alert alert-danger">{{ Session::get('error') }}</p>
+@endif
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     @if (Auth::User()->role === 'A')
-                        <a href="{{ route('distributor.create') }}" class="btn btn-success mb-3">Tambah Distributor Baru</a>
+                        <a href="{{ route('distributor.create') }}" class="mb-3 btn bg-gradient-primary mt-3">Tambah Distributor Baru</a>
                     @endif
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -18,6 +24,7 @@
                                     <th>Email</th>
                                     <th>Catatan</th>
                                     <th>Status</th>
+                                    <th>Tanggal Sampai</th>
                                     @if (Auth::User()->role === 'A')
                                     <th>Aksi</th>
                                     @endif
@@ -37,6 +44,12 @@
                                                 {{ $distributor->status }}
                                             </span>
                                         </td>
+                                        @if ($distributor->status == 'barang sudah sampai')
+                                        <td>{{ $distributor->updated_at }}</td>
+                                        @endif
+                                        @if ($distributor->status == 'sedang diproses')
+                                        <td> - </td>
+                                        @endif
                                         @if (Auth::User()->role === 'A')
                                         <td>
                                             <div class="d-flex flex-row">
@@ -85,7 +98,7 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3">
                                                             <label for="catatan" class="form-label">Catatan:</label>
-                                                            <textarea class="form-control" id="catatan" name="catatan" placeholder="Tambah catatan"></textarea>
+                                                            <textarea class="form-control" id="catatan" name="catatan" placeholder="Tambah catatan">{{$distributor->catatan}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

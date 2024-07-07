@@ -12,8 +12,9 @@
                     <h4 class="card-title">Input Distributor</h4>
                     <p class="card-description">Tambah Distributor baru</p>
 
-                    <form action="{{ route('distributor.store') }}" method="POST">
-                        @csrf
+                    <form class="forms-sample" action="{{ route('distributor.store') }}" method="POST"
+                        enctype="multipart/form-data">
+                         @csrf
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" name="nama" class="form-control" id="nama" required>
